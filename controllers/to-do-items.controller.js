@@ -47,12 +47,14 @@ exports.update = (req, res, next) => {
 };
 
   exports.findByUuid = (req, res) => {
-   try {
-     const toDoList = db.toDoLists.findOne({uuid: req.params.uuid});
-     const listId= toDoList.listId;
-     const todos = db.todoItems.find({listId});
-     return success(res, todos);
-   } catch (err) {
-     next({ status: 400, message: "failed to get todos" });
-   }
-   };
+    db.todoLists.findOne({uuid: req.params.uuid}).then(data => {
+      db.todoItems.find({listId: data.id}).then(data => {
+        res.send(data);
+      }).catch(err => {
+        res.status(400).send({
+          message:
+            err.message || "Failed to get todos."
+        });
+    });}
+    );
+};

@@ -52,13 +52,8 @@ class App extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
-                Add
-              </Link>
-            </li>
-              <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
+                  Logout
                 </a>
               </li>
           </div>
@@ -79,6 +74,7 @@ class App extends Component {
         </nav>
         <div className="container mt-3">
           <Routes>
+            <Route path="/" element={<ToDoList/>} />
             <Route exact path="/login" element={<Login/>} />
             <Route exact path="/register" element={<Register/>} />
             <Route exact path="/to-do-lists" element={<ToDoList/>} />

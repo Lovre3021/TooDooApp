@@ -83,7 +83,7 @@ const TodoList = () => {
         </div>
       </div>
       <div className="col-md-6">
-        <h4>To Do List</h4>
+        <h4>Todo Lists</h4>
         <ul className="list-group">
           {toDoList &&
             toDoList.map((toDoList, index) => (
@@ -98,8 +98,16 @@ const TodoList = () => {
               </li>
             ))}
         </ul>
+        <Link
+              to={"/add"}
+              className="btn btn-outline-secondary"
+              style={{backgroundColor:"Green" , color:"White"}}
+            >
+              Add
+            </Link>
         <button
-          className="m-3 btn btn-sm btn-danger"
+          className="btn btn-outline-secondary"
+          style={{backgroundColor:"Red" , color:"White"}}
           onClick={removeAllToDoLists}
         >
           Remove All
@@ -124,12 +132,12 @@ const TodoList = () => {
               <label>
                 <strong>Status:</strong>
               </label>{" "}
-              {currentToDoList.published ? "Published" : "Pending"}
+              {currentToDoList.published ? "Completed" : "Pending"}
             </div>
             <Link
               to={"/to-do-lists/" + currentToDoList.id}
               className="badge badge-warning"
-              style={{color: 'black'}}
+              style={{backgroundColor:"Green"}}
             >
               Edit
             </Link>

@@ -133,7 +133,7 @@ exports.findAllPublished = (req, res) => {
 
 exports.findByUuid = (req, res) => {
   const uuid = req.params.uuid;
-  ToDoLists.findOne({ uuid: uuid})
+  ToDoLists.findOne({uuid: uuid})
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Not found Todo List with uuid " + uuid });

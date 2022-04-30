@@ -22,6 +22,7 @@ require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require("./routes/to-do-lists.routes")(app);
 require("./routes/to-do-list-shared.routes")(app);
+require("./routes/to-do-items-shared.routes")(app);
 require("./routes/to-do-items.routes")(app);
 
 const PORT = process.env.PORT || 8080;

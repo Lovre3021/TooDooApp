@@ -8,8 +8,6 @@ module.exports = app => {
 
     router.get('/:listId', todoItems.findAll);
 
-    router.get('/:uuid', todoItems.findByUuid);
-
     router.put('/:id', todoItems.update);
 
     router.delete('/:id', todoItems.delete);

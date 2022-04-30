@@ -60,7 +60,8 @@ const TodoItem = props => {
   };
 
   return (
-    <div className="todo edit-form">
+    <div className="todo edit-form"
+    >
       <div className="outer">
         <label>
           <strong>ToDo Items: </strong>

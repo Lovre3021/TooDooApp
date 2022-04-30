@@ -9,7 +9,7 @@ const get = (id) => {
 };
 
 const getSharedPage = (uuid) => {
-  return http.get(`/to-do-lists/shared/${uuid}`);
+  return http.get(`/to-do-list/shared/${uuid}`);
 };
 
 const create = (data) => {

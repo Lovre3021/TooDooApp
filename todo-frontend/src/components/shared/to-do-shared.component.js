@@ -17,7 +17,7 @@ const ToDosShared = props => {
   const [currentSharedToDoList, setCurrentSharedToDoList] = useState(initialSharedToDoListState);
   const getToDoList = uuid => {
     ToDoListService.getSharedPage(uuid)
-      .then(() => {
+      .then(response => {
         setCurrentSharedToDoList(response.data);
 
       })
@@ -35,7 +35,6 @@ const ToDosShared = props => {
     <div>
       {currentSharedToDoList ? (
         <div className="edit-form">
-          <h4>To Do List</h4>
           <form>
             <div className="form-group">
               <label htmlFor="title">Title</label>

@@ -60,7 +60,7 @@ const Todo = props => {
   const updateToDoList = () => {
     ToDoListService.update(currentToDoList.id, currentToDoList)
       .then(response => {
-        setMessage("The To Do list was updated successfully!");
+        setMessage("The Todo list was updated successfully!");
       })
       .catch(e => {
         console.log(e);
@@ -78,6 +78,8 @@ const Todo = props => {
   };
 
   const generateSharedLink = () => {
+    ToDoListService.get(id).then(response => {
+    if (!response.data?.uuid) {
     let uuid = uuidv4();
     currentToDoList.uuid = uuid;
     let sLink = "http://localhost:8081/to-do-lists/shared/" + uuid;
@@ -87,20 +89,25 @@ const Todo = props => {
 
     ToDoListService.update(currentToDoList.id, currentToDoList)
       .then(() => {
-        setMessage("The To Do list was updated successfully!");
+        setMessage("The Todo list was updated successfully!");
         navigator.clipboard.writeText(sLink);
         alert("Shared link generated :" + sLink);
       })
       .catch(e => {
         console.log(e);
       });
+    } else {
+      let sLink = "http://localhost:8081/to-do-lists/shared/" + response.data.uuid;
+      navigator.clipboard.writeText(sLink);
+      alert("Shared link generated :" + sLink);
+    }
+    })
   };
 
   return (
     <div>
       {currentToDoList ? (
         <div className="edit-form">
-          <h4>To Do List</h4>
           <form>
             <div className="form-group">
               <label htmlFor="title">Title</label>
@@ -128,30 +135,36 @@ const Todo = props => {
               <label>
                 <strong>Status:</strong>
               </label>
-              {currentToDoList.published ? "Published" : "Pending"}
+              {currentToDoList.published ? "Completed" : "Pending"}
             </div>
           </form>
           {currentToDoList.published ? (
             <button
               className="badge badge-primary mr-2"
+              style={{backgroundColor:"Darkred" , color:"White"}}
               onClick={() => updatePublished(false)}
             >
-              UnPublish
+              Uncomplete
             </button>
           ) : (
             <button
               className="badge badge-primary mr-2"
+              style={{backgroundColor:"Green" , color:"White"}}
               onClick={() => updatePublished(true)}
             >
-              Publish
+              Completed
             </button>
           )}
-          <button className="badge badge-danger mr-2" onClick={deleteToDoList}>
+          <button className="badge badge-danger mr-2"
+           onClick={deleteToDoList}
+           style={{backgroundColor:"Red" , color:"White"}}
+           >
             Delete
           </button>
           <button
             type="submit"
             className="badge badge-success"
+            style={{backgroundColor:"Blue" , color:"White"}}
             onClick={updateToDoList}
           >
             Update
@@ -159,6 +172,7 @@ const Todo = props => {
           <button
             type="submit"
             className="badge badge-success"
+            style={{backgroundColor:"Coral" , color:"White"}}
             onClick={generateSharedLink}
           >
             Share
@@ -168,7 +182,7 @@ const Todo = props => {
       ) : (
         <div>
           <br />
-          <p>Please click on a To Do list...</p>
+          <p>Please click on a Todo list...</p>
         </div>
       )}
     </div>

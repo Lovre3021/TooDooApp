@@ -5,9 +5,8 @@ const getAllTodos = (listId) => {
 };
 
 const getAllTodosByUuid = (uuid) => {
-  return http.get(`/todos/${uuid}`);
+  return http.get(`/todos/shared/${uuid}`);
 };
-
 const createTodo = (data) => {
   return http.post(`/todos`, data);
 };

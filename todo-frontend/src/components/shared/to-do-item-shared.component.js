@@ -7,26 +7,28 @@ import ToDoService from "../../services/to-do.service"
 const ToDoItemsShared = props => {
   const { uuid } = useParams();
   const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState("");
+  const [todo, _] = useState("");
 
   useEffect(() => {
-    const fetchTodoAndSetTodos = async () => {
-      const todos = await ToDoService.getAllTodosByUuid(uuid);
-      setTodos(todos);
-    };
-    fetchTodoAndSetTodos();
+    retrieveToDoItems(uuid);
   }, [uuid]);
+
+  const retrieveToDoItems = (uuid) => {
+    ToDoService.getAllTodosByUuid(uuid)
+      .then(response => {
+        setTodos(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
 
   return (
     <div className="todo edit-form">
       <div className="outer">
         <label>
-          <strong>ToDo Items: </strong>
+          <strong>Todo Items: </strong>
         </label>
-        <input
-          type="text"
-          value={todo}
-        />
       </div>
 
       <ul className="outer" style={{ padding: '1rem' }}>
