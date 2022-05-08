@@ -24,7 +24,7 @@ and
 ```bash
   ./mongo.exe
 ```
-Now we can start cloning our repository. First create a folder where you plan to store the project. After navigation to that folder using the usual commands you can clone the TooDooApp repository using this command:
+Now we can start cloning our repository. First create a folder where you plan to store the project. After navigation to that folder using the usual commands, you can clone the TooDooApp repository using this command:
 
 ```bash
   $ git clone https://github.com/Lovre3021/TooDooApp.git
@@ -55,14 +55,15 @@ There we go! The page should load now!
 
 
 ## How to use the app?
-Sign up using the sign up button and login afterwards. Start by adding a new Todo List, giving it a fancy title and description and afterwards clicking the edit button to fill it in with ne Todo Items.
+Sign up using the sign up button and login afterwards. Start by adding a new Todo List, giving it a fancy title and description and afterwards clicking the edit button to fill it in with new Todo Items.
 
 If you want to set a Todo Item as completed simply click on it and will be crossed out.
 
-If you want to share a current Todo List with someone, click on the edit button and on share afterwards. A link will be generated and immediately copied to your clipboard ( You will see an alert pop up).
+If you want to share a current Todo List with someone, click on the 'edit' button and on 'share' afterwards. A link will be generated and immediately copied to your clipboard ( You will see an alert pop up).
 ## Notes
 
 * This is my first time using React and Express.
 * The App design is not finalized and is currently considered a placeholder.
 * I haven't separeted controllers and services since this is a simple app and I don't intend to write tests.
 * The Status field is currently used to see at a glance what Todo lists you have completed, they do not mark the available Todo items as completed. That feature is not implemented at this current time.
+* Currently the page has a basic css design as I didn't prioritize that aspect of the app.
