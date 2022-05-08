@@ -63,7 +63,6 @@ If you want to share a current Todo List with someone, click on the 'edit' butto
 ## Notes
 
 * This is my first time using React and Express.
-* The App design is not finalized and is currently considered a placeholder.
+* The page design is not finalized and is currently considered a placeholder as I didn't prioritize that aspect of the app.
 * I haven't separeted controllers and services since this is a simple app and I don't intend to write tests.
 * The Status field is currently used to see at a glance what Todo lists you have completed, they do not mark the available Todo items as completed. That feature is not implemented at this current time.
-* Currently the page has a basic css design as I didn't prioritize that aspect of the app.
